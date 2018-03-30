@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <!-- Required meta tags -->
+      <meta charset="utf-8"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+      <link rel="stylesheet" href="user/style.css"/>
+      <!-- jQuery first, then Tether, then Bootstrap JS. -->
+      <script src='https://code.responsivevoice.org/responsivevoice.js'></script>
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" ></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" ></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" ></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>  
+      <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-sanitize.js"></script>
+      <script src="user/commands.js"></script>  
+      <script src="user/script.js"></script>
+      
+    </head>
+    <body ng-app="homeApp" ng-controller="homeCtrl">
+        <!-- logo -->
+        <div class="container-fluid">
+            <div class="row">
+                <!-- column 1 -->
+                <div class="col-md-8 vertical-center padding-0" style="position:relative;">
+                    <div class="bg-dark" id="youtubebox" ng-bind-html="youtubeBox"> 
+                        ​
+                    </div>
+                    <div id="textbox" class="lead text-justify" ng-bind-html="botmsg"></div>
+                    <div id="inputbox">
+                        <div class="form-group">
+                            <input type="text" ng-model="inputQuery" class="form-control form-control-lg"/>
+                        </div>
+                        <div class="bg-secondary">
+                            <div class="bg-dark text-white d-inline-block padding-10" ng-click="youtubeLive('IndiaTV')">IndiaTV</div>
+                            <div class="bg-secondary text-white d-inline-block padding-10" ng-click="youtubeLive('CNN-News')">CNN-News</div>
+                            <div class="bg-dark text-white d-inline-block padding-10" ng-click="youtubeLive('Sky News')">Sky News</div>
+                            <div class="bg-secondary text-white d-inline-block padding-10" ng-click="youtubeLive('India Today')">India Today</div>
+                            <div class="bg-dark text-white d-inline-block padding-10" ng-click="youtubeLive('Bloomberg Global')">Bloomberg Global</div>
+                            <div class="bg-secondary text-white d-inline-block padding-10" ng-click="youtubeLive('NASA')">NASA</div>
+                            <div class="bg-dark text-white d-inline-block padding-10" ng-click="youtubeLive('DD News')">DD News</div>
+                            <div class="bg-secondary text-white d-inline-block padding-10" ng-click="youtubeLive('Aaj Tak')">Aaj Tak</div>
+                        </div>         
+                    </div>
+                </div>
+                <!-- column 2 -->
+                <div class="col-md-4 bg-info">
+                    <div class="row">
+                            <div class="col-12 text-white bg-danger cricketScore" ng-bind-html="liveScore">
+                                Live Cricket Score
+                            </div>
+                            <div class="col-12 text-white bg-dark" ng-bind-html="news">
+                                news
+                            </div>
+                            <div class="col-12 text-white text-center">
+                                <br/><br/>
+                                <p ng-bind-html="weather"></p>
+                                <br/>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>    
+    </body>
+</html>

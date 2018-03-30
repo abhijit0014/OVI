@@ -1,0 +1,123 @@
+<html lang="en">
+<head>
+  <title>Query Response MAP</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+  <link rel="stylesheet" href="/admin/css/style.css"/>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+  <script src="/admin/js/utility.js"></script>
+  <script src="/admin/js/admin.js"></script>
+</head>
+<body ng-app="App" ng-controller="Ctrl">
+        <noscript>
+          <p class="lead bg-danger text-center text-white">
+                <br/>Please enable javascript in your browser to use this website<br/><br/>
+          </p>
+        </noscript>
+        <div ng-include="'/layout/nev.html'"></div> <br/>   
+
+        <div class="container">
+          <div class="row">
+              <div class="col-sm-6">
+                  <div class="lead">Query</div><br/>
+                  <form ng-submit="queryFormSubmit()">
+                    <div class="row">
+                      <div class="col-sm-9">
+                          <div class="form-group">
+                              <input type="hidden" ng-model="query.id"/>
+                              <input type="text" ng-change="onChangeQuery()" ng-model="query.query" class="text-lowercase form-control form-control-sm"/>
+                          </div>
+                      </div>
+                      <div class="col-sm-3">
+                          <button type="submit" class="btn btn-sm btn-block">Submit</button>
+                      </div>
+                    </div>
+                  </form>  
+                  <div>
+                    <table class="table">
+                        <tbody>
+                          <tr ng-repeat="x in querylist track by x.queryid">
+                            <td class="small">{{x.query}}</td>
+                            <td>
+                              <div ng-click="onClickMapQuery(x.queryid,x.query)">
+                                  <span class="fa fa-retweet" aria-hidden="true"></span>
+                              </div>
+                            </td> 
+                            <td>
+                              <div ng-click="onClickQueryEdit(x.queryid,x.query)">
+                                  <span class="fa fa-pencil" aria-hidden="true"></span>
+                              </div>
+                            </td> 
+                            <td>
+                              <div ng-click="onClickQueryDelete(x.queryid)">
+                                <span class="fa fa-trash-o" aria-hidden="true"></span>
+                              </div>
+                            </td>  
+                          </tr>                         
+                        </tbody>
+                      </table>                  
+                </div>                                      
+              </div>             
+              <div class="col-sm-6">
+                  <div class="lead">MAP</div><br/>
+                  <div>
+                    <table class="table">
+                        <tbody>
+                          <tr><td><b>{{currentQuery}}</b></td><td></td></tr>
+                          <tr ng-repeat="x in mapResponselist">
+                            <td class="small">{{x.response}}</td>
+                            <td>
+                              <div ng-click="onClickMapResponseRemove(x.responseid)">
+                                  <span class="fa fa-times" aria-hidden="true"></span>
+                              </div>
+                            </td>  
+                          </tr>                         
+                        </tbody>
+                      </table>                   
+                  </div>                    
+                  <form ng-submit="responseFormSubmit()">
+                      <div class="row">
+                        <div class="col-sm-9">
+                            <div class="form-group">
+                                <input type="hidden" ng-model="response.responseid"/>
+                                <input type="text" ng-change="onChangeResponse()" ng-model="response.response" class="text-lowercase form-control form-control-sm"/>
+                              </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <button type="submit" class="btn btn-sm btn-block">Submit</button>
+                        </div>
+                      </div>
+                  </form> 
+                  <div>
+                    <table class="table">
+                        <tbody>
+                          <tr ng-repeat="x in responselist">
+                            <td class="small">{{x.response}}</td>
+                            <td>
+                                <div ng-click="onClickMapResponse(x.responseid)">
+                                    <span class="fa fa-plus-square" aria-hidden="true"></span>
+                                </div>
+                            </td>                             
+                            <td>
+                              <div ng-click="onClickResponseEdit(x.responseid,x.response)">
+                                  <span class="fa fa-pencil" aria-hidden="true"></span>
+                              </div>
+                            </td> 
+                            <td>
+                              <div ng-click="onClickResponseDelete(x.responseid)">
+                                <span class="fa fa-trash-o" aria-hidden="true"></span>
+                              </div>
+                            </td>  
+                          </tr>                         
+                        </tbody>
+                      </table>                   
+                  </div>                                    
+              </div>         
+          </div>          
+        </div>   
+</body>
+</html>
